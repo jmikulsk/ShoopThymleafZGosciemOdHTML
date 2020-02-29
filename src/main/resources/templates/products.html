@@ -4,7 +4,7 @@
     <body>
         <div class="container">
         <h2>Produkty</h2>
-            <table class="uk-table uk-table-stripped">
+            <table class="uk-table uk-table-striped uk-table-hover">
                 <thead>
                 <tr>
                     <th>ID</th>
@@ -16,22 +16,25 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                        <td>2</td>
-                        <td>Mleko</td>
-                        <td>5.00</td>
-                        <td>100</td>
+                <tr th:each="product : ${products}">
+                        <td th:text="${product.id}"></td>
+                        <td th:text="${product.name}"></td>
+                        <td th:text="|${#numbers.formatDecimal(product.price,1,2) } zł|"></td>
+                        <td th:text="${product.quantity}"></td>
                         <td>
-                            <span uk-icon="icon: check"></span>
+                            <span th:uk-icon="${product.available}? 'check':'close' "></span>
                         </td>
                         <td style="width:250px">
-                            <a><input class="uk-button uk-button-primary" value="Edytuj" type="button"> </a>
-                            <a><input class="uk-button uk-button-danger" value="Usuń" type="button"> </a>
+                            <a th:href="@{/products/edit/{id}(id=${product.id})}"><input class="uk-button uk-button-primary" value="Edytuj" type="button"> </a>
+                            <a th:href="@{/products/remove/{id}(id=${product.id})}"><input class="uk-button uk-button-danger" value="Usuń" type="button"> </a>
                         </td>
-                    </tr>
+                </tr>
                 </tbody>
             </table>
-            `
+            <div>
+                <a th:href="@{/products/new}"><input class="uk-button" type="button" value="Dodaj produkt" style="background-color: #32d296;color: white" > </a>
+            </div>
+
 
         </div>
     </body>

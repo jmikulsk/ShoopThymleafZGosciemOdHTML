@@ -22,6 +22,16 @@ public class ProductDaoImpl implements ProductDao {
     }
 
     @Override
+    public Product getById(Long id) {
+        return productMap.get(id);
+    }
+
+    @Override
+    public void removeProduct(Long id) {
+        productMap.remove(id);
+    }
+
+    @Override
     public void saveProduct(Product product) {
         if(product.getId()<1){
             product.setId(id);
@@ -44,10 +54,10 @@ public class ProductDaoImpl implements ProductDao {
         saveProduct(product);
 
         Product product2 = new Product();
-        product.setName("Produkt 2");
-        product.setPrice(15);
-        product.setQuantity(120);
-        product.setAvailable(true);
+        product2.setName("Produkt 2");
+        product2.setPrice(15);
+        product2.setQuantity(120);
+        product2.setAvailable(false);
         saveProduct(product2);
     }
 
