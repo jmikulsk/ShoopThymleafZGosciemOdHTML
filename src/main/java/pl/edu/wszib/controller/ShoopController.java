@@ -21,4 +21,8 @@ public class ShoopController {
         model.addAttribute("shippingMethodPrice3",10.20);
         return "shipping";
     }
+    @GetMapping("products")
+    public String products(){
+        return "products";
+    }
 }
