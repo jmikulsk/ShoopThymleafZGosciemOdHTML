@@ -23,4 +23,12 @@ public class RestShopController {
     public void removeProduct(@PathVariable Long id){
         productDao.removeProduct(id);
     }
-}
+    @PostMapping("products/save")
+    public void saveProduct(@RequestBody Product product) {
+        productDao.saveProduct(product);
+    }
+
+    @GetMapping("products/single/{id}")
+    public Product getProduct(@PathVariable Long id) {
+        return productDao.getById(id);
+}}

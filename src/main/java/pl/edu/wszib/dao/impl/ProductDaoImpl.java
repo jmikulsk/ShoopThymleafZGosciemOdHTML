@@ -47,7 +47,7 @@ public class ProductDaoImpl implements ProductDao {
 
     private void prepareProductsList() {
         Product product = new Product();
-        product.setName("Produkt 1");
+        product.setName("Produkt 7");
         product.setPrice(10);
         product.setQuantity(100);
         product.setAvailable(true);
